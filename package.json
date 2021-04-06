@@ -1,0 +1,14 @@
+{
+  "name": "sample-node-server",
+  "version": "1.0.0",
+  "description": "Sample node server for A7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Forero",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
