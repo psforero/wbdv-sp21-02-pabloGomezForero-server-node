@@ -4,6 +4,13 @@ const questions = require('./questions.json');
 const findAllQuestions = () => {
   return questions;
 }
+
+const findQuestionsForQuiz = (quizId) => {
+  return questions.filter((question) => {
+    return question.quizId === quizId;
+  })
+}
+
 const findQuestionById = (questionId) => {
   return questions.find((question) => {
     return question._id === questionId;
@@ -12,13 +19,16 @@ const findQuestionById = (questionId) => {
 
 // WRITES
 const createQuestion = () => {}
+const createQuestionForQuiz = () => {}
 const updateQuestion = () => {}
 const deleteQuestion = () => {}
 
 module.exports = {
-  createQuestion,
   findAllQuestions,
+  findQuestionsForQuiz,
   findQuestionById,
+  createQuestion,
+  createQuestionForQuiz,
   updateQuestion,
   deleteQuestion,
 }
