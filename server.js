@@ -1,8 +1,20 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// const demos = require('./controllers/demos-controller');
-// demos(app);
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/whiteboard-02',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+
+const db = mongoose.connection;
+db.on('error', (error) => console.log(error))
+db.once('open', () => console.log('Connected to database'))
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

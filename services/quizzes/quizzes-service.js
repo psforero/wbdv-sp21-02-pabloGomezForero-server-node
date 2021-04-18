@@ -1,19 +1,24 @@
-const quizzes = require('./quizzes.json');
+const quizzesModel = require('../../models/quizzes/quizzes-model')
 
 // READS
 const findAllQuizzes = () => {
-  return quizzes;
+  return quizzesModel.find();
 }
+
 const findQuizById = (quizId) => {
-  return quizzes.find((quiz) => {
-    return quiz._id === quizId;
-  })
+  return quizzesModel.findById(quizId)
 }
 
 // WRITES
-const createQuiz = () => {}
-const updateQuiz = () => {}
-const deleteQuiz = () => {}
+const createQuiz = (quiz) => {
+  return quizzesModel.create(quiz);
+}
+const updateQuiz = (quizId, quiz) => {
+  return quizzesModel.findByIdAndUpdate(quizId, quiz, {new: true});
+}
+const deleteQuiz = (quizId) => {
+  return quizzesModel.findByIdAndRemove(quizId);
+}
 
 module.exports = {
   createQuiz,
