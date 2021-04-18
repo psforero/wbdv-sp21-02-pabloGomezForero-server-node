@@ -2,10 +2,6 @@ module.exports = (app) => {
   const quizzesService = require('../services/quizzes/quizzes-service')
 
   const findAllQuizzes = (req, res) => {
-    // Hardcoded version
-    // const quizzes = quizzesService.findAllQuizzes();
-    // res.send(quizzes);
-
     quizzesService.findAllQuizzes()
       .then((quizzes) => {
         res.send(quizzes);
@@ -13,8 +9,8 @@ module.exports = (app) => {
   }
 
   const findQuizById = (req, res) => {
-    const qId = req.params['quizId'];
-    quizzesService.findQuizById(qId)
+    const quizId = req.params['quizId'];
+    quizzesService.findQuizById(quizId)
       .then((quiz) => {
         res.send(quiz);
       })

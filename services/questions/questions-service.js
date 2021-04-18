@@ -1,32 +1,16 @@
-const questionsModel = require('../../models/questionsModel/questionsModel-model');
+const questionsDao = require('../../daos/questions-dao');
 
-// READS
-const findAllQuestions = () => {
-  return questionsModel.find();
-}
+const findAllQuestions = () =>
+  questionsDao.findAllQuestions();
 
-const findQuestionsForQuiz = (quizId) => {
-  return questionsModel.find({quizId: quizId})
-}
+const findQuestionById = (quizId) =>
+  questionsDao.findQuestionsById(quizId);
 
-const findQuestionById = (questionId) => {
-  return questionsModel.find((question) => {
-    return question._id === questionId;
-  })
-}
-
-// WRITES
-const createQuestion = () => {}
-const createQuestionForQuiz = () => {}
-const updateQuestion = () => {}
-const deleteQuestion = () => {}
+const findQuestionsForQuiz = (quizId) =>
+  questionsDao.findQuestionsForQuiz(quizId);
 
 module.exports = {
   findAllQuestions,
-  findQuestionsForQuiz,
   findQuestionById,
-  createQuestion,
-  createQuestionForQuiz,
-  updateQuestion,
-  deleteQuestion,
+  findQuestionsForQuiz
 }

@@ -1,29 +1,11 @@
-const quizzesModel = require('../../models/quizzes/quizzes-model')
+const quizzesDao = require('../../daos/quizzes-dao');
 
-// READS
-const findAllQuizzes = () => {
-  return quizzesModel.find();
-}
-
-const findQuizById = (quizId) => {
-  return quizzesModel.findById(quizId)
-}
-
-// WRITES
-const createQuiz = (quiz) => {
-  return quizzesModel.create(quiz);
-}
-const updateQuiz = (quizId, quiz) => {
-  return quizzesModel.findByIdAndUpdate(quizId, quiz, {new: true});
-}
-const deleteQuiz = (quizId) => {
-  return quizzesModel.findByIdAndRemove(quizId);
-}
+const findAllQuizzes = () =>
+  quizzesDao.findAllQuizzes();
+const findQuizById = (quizId) =>
+  quizzesDao.findQuizById(quizId);
 
 module.exports = {
-  createQuiz,
   findAllQuizzes,
-  findQuizById,
-  updateQuiz,
-  deleteQuiz,
+  findQuizById
 }
